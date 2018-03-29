@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import DeckList from './src/DeckList/index'
 import NewDeck from './src/NewDeck/index'
 import Deck from './src/Deck/index'
+import addCard from './src/addCard/index'
 import { TabNavigator, StackNavigator } from 'react-navigation'
 import { createStore, applyMiddleware} from 'redux'
 import thunk from 'redux-thunk'
@@ -10,9 +11,12 @@ import { Provider } from 'react-redux'
 import rootReducer from './rootReducer'
 import { white, purple, gray } from './utils/colors'
 import Quiz from './src/Quiz/index'
+import { setDecks } from "./utils/helpers";
+
+setDecks()
 
 const Tabs = TabNavigator({
-    Decks:{
+    DeckList:{
         screen: DeckList
     },
     NewDeck:{
@@ -45,6 +49,15 @@ const Stacks = StackNavigator({
             headerTintColor: white,
             headerStyle: {
                 backgroundColor: purple
+            }
+        }
+    },
+    addCard:{
+        screen:addCard,
+        navigationOptions:{
+            headerTintColor:white,
+            headerStyle:{
+                backgroundColor:purple
             }
         }
     }

@@ -1,18 +1,64 @@
-import React from 'react'
-import { View, Text, StyleSheet} from 'react-native'
+import React, { Component } from 'react'
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, AsyncStorage} from 'react-native'
+import { saveDeckTitle } from "../../utils/helpers";
+import { fetchDecks } from "../DeckList/action";
+import { connect } from 'react-redux'
 
-export default function NewDeck(){
-    return (
-        <View  style={style.container}>
-            <Text>
-                New Deck
-            </Text>
-        </View>
-    )
+class NewDeck extends Component{
+    state = {
+        title:''
+    }
+    render(){
+        return (
+            <View  style={style.container}>
+                <Text style={{fontSize:25, textAlign:'center'}}>
+                    What is the title of your new Deck?
+                </Text>
+                <TextInput
+                    style={style.textInput}
+                    onChangeText={(title) => {
+                        console.log(title)
+                        this.setState({title})
+                    }}
+                    value={this.state.title}
+                />
+                <TouchableOpacity style={style.submit} onPress={() => {
+                    console.log('text', this.state.title)
+                    saveDeckTitle(this.state.title).then((err, results) => {
+                        this.props.dispatch(fetchDecks())
+                        this.props.navigation.navigate('Deck', {
+                            key:this.state.title,
+                            questions:[]
+                        })
+                    })
+                }}>
+                    <Text style={{color:'#fff', fontSize:30}}>Submit</Text>
+                </TouchableOpacity>
+            </View>
+        )
+    }
 }
 
 const style = StyleSheet.create({
     container:{
-        flex:1
+        flex:1,
+        alignItems:'center',
+        marginTop:150
+    },
+    textInput:{
+        height: 40,
+        width:200,
+        borderColor: 'gray',
+        borderWidth: 1,
+        marginTop:40
+    },
+    submit:{
+        marginTop:50,
+        width:160,
+        height:50,
+        alignItems:'center',
+        backgroundColor: 'black'
     }
 })
+
+export default connect()(NewDeck)

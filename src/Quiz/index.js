@@ -40,7 +40,7 @@ class Quiz extends Component{
                                                                     <Text style={{color:red, fontSize:20}}>Answer</Text>
                                                                 </TouchableOpacity>
                                                             </View>:<View style={styles.title}>
-                                                                <Text style={{fontSize:35}}>
+                                                                <Text style={{fontSize:25, textAlign:'center'}}>
                                                                     {item.answer}
                                                                 </Text>
                                                                 <TouchableOpacity style={styles.question} onPress={()=>{
@@ -75,8 +75,20 @@ class Quiz extends Component{
                         </View>
                     </View>
                 ))}
-                {this.state.index === this.state.questions.length?<View>
-                    <Text>Percentage Correct: {this.state.correctCount/this.state.questions.length*100}%</Text>
+                {this.state.index === this.state.questions.length?<View style={styles.percentage}>
+                    <Text style={{fontSize:25}}>Percentage Correct: {this.state.correctCount/this.state.questions.length*100}%</Text>
+                    <TouchableOpacity style={styles.restart} onPress={()=> {
+                        this.setState({
+                            index:0
+                        })
+                    }}>
+                        <Text>ReStart Quiz</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.back} onPress={()=>{
+                        this.props.navigation.goBack()
+                    }}>
+                        <Text style={{color:'#fff'}}>Back to Deck</Text>
+                    </TouchableOpacity>
                 </View>:<View></View>}
             </View>
         )
@@ -89,7 +101,7 @@ const styles = StyleSheet.create({
     },
     title:{
         flex:1,
-        marginTop:200,
+        marginTop:120,
         alignItems:'center'
     },
     answer:{
@@ -115,8 +127,34 @@ const styles = StyleSheet.create({
     },
     record:{
         flex:1,
-        marginTop:200,
+        marginTop:250,
         alignItems:'center'
+    },
+    percentage:{
+        flex:1,
+        alignItems:'center',
+        marginTop:200
+        // alignItems:'center',
+        // justifyContent:'center',
+    },
+    restart:{
+        flex:1,
+        justifyContent:'center',
+        padding:20,
+        marginTop:20,
+        marginBottom:20,
+        borderColor: '#000',
+        borderWidth:2,
+        borderRadius:5
+    },
+    back:{
+        flex:1,
+        justifyContent:'center',
+        padding:20,
+        borderColor: 'black',
+        borderWidth:2,
+        borderRadius:5,
+        backgroundColor:'#000'
     }
 })
 

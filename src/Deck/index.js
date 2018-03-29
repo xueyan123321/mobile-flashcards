@@ -17,7 +17,13 @@ class Deck extends Component{
                 <Text style={styles.cardNumbers}>{this.props.navigation.state.params.questions.length
                 } cards</Text>
                 <TouchableOpacity style={styles.addCard}>
-                    <Text>Add Card</Text>
+                    <Text onPress={() => {
+                        console.log('2223233')
+                        this.props.navigation.navigate('addCard', {
+                            title: 'Add Card',
+                            DeckTitle: this.props.navigation.state.params.key
+                        })
+                    }}>Add Card</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.startQuiz} onPress={() => {
                     this.props.navigation.navigate('Quiz', {

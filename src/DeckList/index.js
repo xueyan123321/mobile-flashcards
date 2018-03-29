@@ -25,7 +25,7 @@ class DeckList extends Component{
                                 })
                             }}>
                                 <Text>{key}</Text>
-                                <Text>Card: {decks[key].questions.length}</Text>
+                                <Text>{decks[key].questions?decks[key].questions.length:0} cards</Text>
                             </TouchableOpacity>
                         </Item>
                     ))}
