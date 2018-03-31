@@ -21,6 +21,7 @@ Mobile-flashcards Project
 ├── App.js. This file includes the router information
 ├── rootReducer.js This file composes Deck.
 └── src
+
     └── App.css
     └── addCard. This file is about New Question View managed by Stack navigator
     └── Deck. This file is about individual Deck View managed by Stack navigator.
@@ -28,3 +29,4 @@ Mobile-flashcards Project
     └── NewDeck. This file is about New Deck View managed by Tab navigator.  
     └── Quiz.  This file is about Quiz View managed by Stack navigator.
  ```
+ 
