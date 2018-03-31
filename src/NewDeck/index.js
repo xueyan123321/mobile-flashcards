@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, AsyncStorage} from 'react-native'
+import { View, Text, StyleSheet, TextInput, TouchableOpacity} from 'react-native'
 import { saveDeckTitle } from "../../utils/helpers";
-import { fetchDecks } from "../DeckList/action";
-import { connect } from 'react-redux'
 
 class NewDeck extends Component{
     state = {

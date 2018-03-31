@@ -8,12 +8,12 @@ import { TabNavigator, StackNavigator } from 'react-navigation'
 import { createStore, applyMiddleware} from 'redux'
 import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
-import rootReducer from './rootReducer'
+
+import reduce from './src/DeckList/reducer'
 import { white, purple, gray } from './utils/colors'
 import Quiz from './src/Quiz/index'
-import { setDecks } from "./utils/helpers";
 
-setDecks()
+
 
 const Tabs = TabNavigator({
     DeckList:{
@@ -66,7 +66,7 @@ const Stacks = StackNavigator({
 export default class App extends React.Component {
   render() {
     return (
-        <Provider store={createStore(rootReducer, applyMiddleware(thunk))}>
+        <Provider store={createStore(reduce, applyMiddleware(thunk))}>
           <View style={styles.container}>
             <Stacks/>
           </View>
