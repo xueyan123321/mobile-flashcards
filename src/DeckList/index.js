@@ -7,9 +7,11 @@ import { connect } from 'react-redux'
 const Item = List.Item
 
 class DeckList extends Component{
+    /**
+     *@description return a list of decks
+     */
     componentDidMount(){
         this.props.dispatch(fetchDecks())
-        console.log('decks', this.props.decks)
     }
     render() {
         const { decks } = this.props

@@ -50,7 +50,6 @@ export const getDeck = (id)=> {
 }
 
 export const saveDeckTitle = (title) => {
-    console.log(title, 'title')
     return AsyncStorage.mergeItem(DECKS_KEY, JSON.stringify({
         [title]:{
             // id:uuid.v1(),

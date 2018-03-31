@@ -1,5 +1,4 @@
 import { RECEIVE_DECKS } from './action'
-import { GET_QUESTIONS } from "../Quiz/action";
 
 export function decks(state={}, action){
     const {type, decks, title} = action
@@ -10,8 +9,6 @@ export function decks(state={}, action){
                 ...state,
                 ...decks
             }
-        case GET_QUESTIONS:
-
         default:
             return state
     }

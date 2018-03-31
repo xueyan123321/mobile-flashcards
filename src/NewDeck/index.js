@@ -23,9 +23,7 @@ class NewDeck extends Component{
                     value={this.state.title}
                 />
                 <TouchableOpacity style={style.submit} onPress={() => {
-                    console.log('text', this.state.title)
                     saveDeckTitle(this.state.title).then((err, results) => {
-                        this.props.dispatch(fetchDecks())
                         this.props.navigation.navigate('Deck', {
                             key:this.state.title,
                             questions:[]
@@ -61,4 +59,4 @@ const style = StyleSheet.create({
     }
 })
 
-export default connect()(NewDeck)
+export default NewDeck
