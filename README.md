@@ -28,7 +28,7 @@ Mobile-flashcards Project
     └── Quiz.  This file is about Quiz View managed by Stack navigator.
  ```
  
- ##test
+ ## test
  
  The Android Platform has been tested.
  
