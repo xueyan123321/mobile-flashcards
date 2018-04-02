@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet, TouchableOpacity} from 'react-native'
 import { red } from "../../utils/colors";
+import {clearLocalNotification, setLocalNotification} from "../../utils/helpers";
 
 
 class Quiz extends Component{
@@ -19,6 +20,10 @@ class Quiz extends Component{
         console.log(this.props.navigation.state.params.questions, 'questions')
     }
     render(){
+        // if user have finished at least one quiz today, the app won't pop out the notification
+        if(this.state.index === this.state.questions.length){
+            clearLocalNotification().then(setLocalNotification)
+        }
         return (
             <View>
                 {this.state.questions.filter((item,index) => index === this.state.index).map(item =>(

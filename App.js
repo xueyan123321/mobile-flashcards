@@ -12,15 +12,21 @@ import { Provider } from 'react-redux'
 import reduce from './src/DeckList/reducer'
 import { white, purple, gray } from './utils/colors'
 import Quiz from './src/Quiz/index'
-
+import { setLocalNotification } from "./utils/helpers";
 
 
 const Tabs = TabNavigator({
     DeckList:{
-        screen: DeckList
+        screen: DeckList,
     },
     NewDeck:{
         screen: NewDeck
+    }
+},{
+    tabBarOptions:{
+        style:{
+            backgroundColor:purple
+        }
     }
 })
 
@@ -64,7 +70,11 @@ const Stacks = StackNavigator({
 })
 
 export default class App extends React.Component {
-  render() {
+    componentDidMount(){
+        // set the notification
+        setLocalNotification()
+    }
+    render() {
     return (
         <Provider store={createStore(reduce, applyMiddleware(thunk))}>
           <View style={styles.container}>
@@ -72,7 +82,7 @@ export default class App extends React.Component {
           </View>
         </Provider>
     );
-  }
+    }
 }
 
 const styles = StyleSheet.create({
